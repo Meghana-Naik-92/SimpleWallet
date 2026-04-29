@@ -1,0 +1,10 @@
+{
+  "SimpleWallet.sol": {
+    "__sources__": {
+      "SimpleWallet.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract SimpleWallet {\r\n    address public owner;\r\n\r\n    constructor() {\r\n        owner = msg.sender;   // Set deployer as owner\r\n    }\r\n\r\n    // Only owner can call certain functions\r\n    modifier onlyOwner() {\r\n        require(msg.sender == owner, \"Not owner\");\r\n        _;\r\n    }\r\n\r\n    // Deposit Ether into contract\r\n    function deposit() external payable {}\r\n\r\n    // Check contract balance\r\n    function getBalance() external view returns (uint) {\r\n        return address(this).balance;\r\n    }\r\n\r\n    // Withdraw specific amount to owner's wallet\r\n    function withdraw(uint _amount) external onlyOwner {\r\n        // Ensure the contract has enough funds before trying to withdraw\r\n        require(address(this).balance >= _amount, \"Insufficient balance\");\r\n\r\n        // Using .call instead of .transfer to avoid gas-related deprecation warnings\r\n        (bool success, ) = payable(owner).call{value: _amount}(\"\");\r\n        require(success, \"Transfer failed.\");\r\n    }\r\n}",
+        "file": "SimpleWallet.sol"
+      }
+    }
+  }
+}
