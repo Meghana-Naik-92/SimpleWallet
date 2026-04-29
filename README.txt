@@ -5,7 +5,6 @@ A simple beginner project where I tried building a basic crypto wallet using a s
 The goal was to understand how a website can interact with the blockchain.
 
 🚀 Problem Statement
-
 Create a basic wallet system where:
 
 Anyone can send (deposit) ETH
@@ -76,7 +75,9 @@ Ethers.js
 MetaMask
 Sepolia Testnet
 HTML / CSS / JavaScript
-💡 What I Learned (Honestly)
+
+
+💡 What I Learned
 
 From this project, I got a basic idea of:
 
@@ -88,7 +89,6 @@ How frontend can interact with blockchain using Ethers.js
 I’m still new and learning deeper concepts step by step.
 
 ⚠️ Note
-
 This is a beginner learning project.
 Not secure or ready for real-world use.
 
@@ -100,7 +100,5 @@ Make it more user-friendly
 
 
 🙌 Final Note
-
 This was one of my first attempts at building something related to blockchain.
-
 Still learning, still exploring 👍
