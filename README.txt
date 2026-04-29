@@ -63,14 +63,17 @@ Deposit ETH
 Withdraw ETH (only owner)
 Balance is fetched from blockchain and displayed in UI
 
-🧪 Testing
-Type	Scenario	Result
-✅ Positive	Connect Wallet	Wallet connected and address displayed on UI
-✅ Positive	Deposit ETH	Transaction confirmed via MetaMask and recorded on blockchain
-✅ Positive	Balance Update	Contract balance updated and reflected in UI
-❌ Negative	Unauthorized Withdraw	Transaction failed for non-owner
-❌ Negative	Insufficient Funds	MetaMask blocked the transaction
-❌ Negative	Empty Input	Deposit prevented or transaction failed
+
+## 🧪 Testing
+
+| Type        | Scenario               | Result                                                                |
+|------------|----------------------|----------------------------------------------------------------------|
+| ✅ Positive | Connect Wallet        | Wallet connected and address displayed on UI                         |
+| ✅ Positive | Deposit ETH           | Transaction confirmed via MetaMask and recorded on blockchain        |
+| ✅ Positive | Balance Update        | Contract balance updated and reflected in UI                         |
+| ❌ Negative | Unauthorized Withdraw | Transaction failed for non-owner                                     |
+| ❌ Negative | Insufficient Funds    | MetaMask blocked the transaction                                     |
+| ❌ Negative | Empty Input           | Deposit prevented or transaction failed                              |
 
 🛠️ Tech Used
 Solidity
