@@ -4,18 +4,24 @@ pragma solidity ^0.8.0;
 contract SimpleWallet {
     address public owner;
 
+    // Define Events here (at the top of the contract)
+    event Deposited(address indexed sender, uint amount);
+    event Withdrawn(uint amount);
+
     constructor() {
-        owner = msg.sender;   // Set deployer as owner
+        owner = msg.sender;
     }
 
-    // Only owner can call certain functions
     modifier onlyOwner() {
         require(msg.sender == owner, "Not owner");
         _;
     }
 
     // Deposit Ether into contract
-    function deposit() external payable {}
+    function deposit() external payable {
+        // Emit event when someone sends money
+        emit Deposited(msg.sender, msg.value);
+    }
 
     // Check contract balance
     function getBalance() external view returns (uint) {
@@ -24,11 +30,12 @@ contract SimpleWallet {
 
     // Withdraw specific amount to owner's wallet
     function withdraw(uint _amount) external onlyOwner {
-        // Ensure the contract has enough funds before trying to withdraw
         require(address(this).balance >= _amount, "Insufficient balance");
 
-        // Using .call instead of .transfer to avoid gas-related deprecation warnings
         (bool success, ) = payable(owner).call{value: _amount}("");
         require(success, "Transfer failed.");
+
+        // Emit event after a successful withdrawal
+        emit Withdrawn(_amount);
     }
 }
